@@ -4,3 +4,12 @@
 
 #include "CoreMinimal.h"
 
+/**
+ * 
+ */
+class BUILDINGESCAPE_API MyClass
+{
+public:
+	MyClass();
+	~MyClass();
+};
