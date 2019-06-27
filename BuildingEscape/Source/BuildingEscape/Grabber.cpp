@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Grabber.h"
+
 #include "GameFramework/Actor.h"
 #include "DrawDebugHelpers.h"
 #include "CollisionQueryParams.h"
@@ -9,8 +9,9 @@
 #include "Components/PrimitiveComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/Character.h"
-
+#include "Grabber.h"
 #define OUT
+
 // Sets default values for this component's properties
 UGrabber::UGrabber()
 {
@@ -29,6 +30,18 @@ void UGrabber::BeginPlay()
 
 	UE_LOG(LogTemp, Warning, TEXT("Grabber Reporting for duty"));
 	
+	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
+
+	if (PhysicsHandle)
+	{
+
+	}
+
+			
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("%s missing physics handle component"), *GetOwner()->GetName())
+	}
 }
 
 
@@ -68,14 +81,14 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 
 	);
 
-	AActor* ActorHit = Hit.GetActor();
+	 AActor* ActorHit = Hit.GetActor();
 
 	if (ActorHit)
-(
+{
 
       UE_LOG(LogTemp, Warning, TEXT("Line trace hit: %s"), (*ActorHit->GetName()))
 
-);
+};
 
 
 }
